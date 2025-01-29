@@ -5,6 +5,11 @@ Resource           ${CURDIR}/../resources/common.resource
 Force Tags        api
     
 *** Test Cases ***
+Should Not Get Data Without API Key
+    [Documentation]    Tries to get data from routing API without API key and checks that response is 401.
+    [Tags]    routing-api
+    ${r}    POST    ${ROUTING_API_URL}    expected_status=401
+
 Request Stop With Attributes
     [Documentation]    Gets a stop with given attributes and verifies that the response has them.
     [Tags]    routing-api

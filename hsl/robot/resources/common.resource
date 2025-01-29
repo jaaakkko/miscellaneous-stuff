@@ -6,7 +6,7 @@ Library           Collections
 Library           ${CURDIR}/../libs/queries.py
 
 *** Variables ***
-${APIKEY}                             insert-your-api-key-here
+${APIKEY}                             insert-your-api-key-here / fetch from env or other secure location
 
 ${ROUTING_API_URL}                    https://api.digitransit.fi/routing/v2/hsl/gtfs/v1
 ${GEOCODING_API_URL}                  http://api.digitransit.fi/geocoding/v1

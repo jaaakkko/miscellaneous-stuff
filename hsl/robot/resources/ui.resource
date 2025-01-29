@@ -14,7 +14,6 @@ ${LOC_TICKET_PRICE}                   //div[contains(@class, "ticketItemColumnPr
 *** Keywords ***
 Decline Cookies
     Click    ${LOC_BTN_DECLINE_COOKIES}
-
 Click One Time Tickets
     Click    ${LOC_BTN_ONETIME_TICKETS}
 Get Ticket Price With Selections
