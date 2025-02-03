@@ -30,7 +30,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Install Playwright dependencies
-      run: 
+      run: |
         npx playwright install-deps
         npx playwright install
       working-directory: C:\hostedtoolcache\windows\Python\3.12.8\x64\Lib\site-packages\Browser\wrapper
