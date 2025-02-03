@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const APIKEY = 'insert-your-api-key-here';
+const APIKEY = process.env.APIKEY;
 const ROUTING_API_URL = 'https://api.digitransit.fi/routing/v2/hsl/gtfs/v1'
 const GEOCODING_API_URL = 'http://api.digitransit.fi/geocoding/v1'
 const GEOCODING_REVERSE_ENDPOINT = '/reverse'
