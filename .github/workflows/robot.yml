@@ -32,12 +32,12 @@ jobs:
     - name: Install Rfbrowser dependencies
       run: |
         npm ci
-      working-directory: C:\hostedtoolcache\windows\Python\3.12.8\x64\Lib\site-packages\Browser\wrapper
+      working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
         
     - name: Install Playwright Browsers
       run: |
         npx playwright install
-      working-directory: C:\hostedtoolcache\windows\Python\3.12.8\x64\Lib\site-packages\Browser\wrapper
+      working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
 
     - name: Run Robot Framework tests
       run: |
