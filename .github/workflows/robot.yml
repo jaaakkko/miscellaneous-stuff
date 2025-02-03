@@ -31,8 +31,8 @@ jobs:
 
     - name: Install Playwright dependencies
       run: |
-        npx playwright install-deps
-        npx playwright install
+        npm install
+        npx playwright install --with-deps
       working-directory: C:\hostedtoolcache\windows\Python\3.12.8\x64\Lib\site-packages\Browser\wrapper
 
     - name: Run Robot Framework tests
