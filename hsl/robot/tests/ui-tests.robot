@@ -2,7 +2,7 @@
 Resource           ${CURDIR}/../resources/common.resource
 Resource          ${CURDIR}/../resources/ui.resource
 
-Suite Setup    New Browser    ${BROWSER}    headless=${False}
+Suite Setup    New Browser    ${BROWSER}    headless=${HEADLESS}
 
 Force Tags        ui
 
