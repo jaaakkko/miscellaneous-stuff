@@ -6,9 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: hsl/robot
+    # defaults:
+    #   run:
+    #     working-directory: hsl/robot
 
     steps:
     - name: Checkout repository
@@ -44,17 +44,18 @@ jobs:
     #     PLAYWRIGHT_BROWSERS_PATH: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper/node_modules/playwright-core/.local-browsers
 
     - name: Run Robot Framework tests
-      uses: joonvena/robotframework-docker-action@v1.1
-      with:
-        robot_options: -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }} -v HEADLESS:True
-      env:
-        ROBOT_TESTS_DIR: ${{ github.workspace }}/tests
-        ROBOT_REPORTS_DIR: ${{ github.workspace }}/reports
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}/hsl/robot/results:/opt/robotframework/reports:Z \
+          -v ${{ github.workspace }}/hsl/robot/tests:/opt/robotframework/tests:Z \
+          -e APIKEY=${{ secrets.DIGITRANSIT_APIKEY }} \
+          ppodgorsek/robot-framework:latest \
+          robot -d /opt/robotframework/results -v APIKEY:${APIKEY} -v HEADLESS:True /opt/robotframework/tests
 
     - name: Upload Robot Framework results
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: robot-results
-        path: ${{ github.workspace }}/reports
+        path: ${{ github.workspace }}/hsl/robot/results
         retention-days: 30
