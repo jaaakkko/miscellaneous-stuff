@@ -46,7 +46,7 @@ jobs:
     - name: Run Robot Framework tests
       uses: joonvena/robotframework-docker-action@v1.1
       with:
-        robot_options: robot -d ./results -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }} -v HEADLESS:True
+        robot_options: -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }} -v HEADLESS:True
       env:
         ROBOT_TESTS_DIR: ${{ github.workspace }}/tests
         ROBOT_REPORTS_DIR: ${{ github.workspace }}/reports
