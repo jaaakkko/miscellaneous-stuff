@@ -46,13 +46,14 @@ jobs:
     - name: Run Robot Framework tests
       run: |
         pwd
-        ls
         tree
-        sudo mkdir ${{ github.workspace }}/hsl/robot/reports && sudo chmod -R 777 ${{ github.workspace }}/hsl/robot
+        sudo mkdir ${{ github.workspace }}/hsl/robot/reports && sudo chmod -R 777 ${{ github.workspace }}
         docker run --rm \
           -v ${{ github.workspace }}/hsl/robot/requirements.txt:/opt/robotframework/pip-requirements.txt:Z \
           -v ${{ github.workspace }}/hsl/robot/reports:/opt/robotframework/reports:Z \
-          -v ${{ github.workspace }}/hsl/robot:/opt/robotframework/tests:Z \
+          -v ${{ github.workspace }}/hsl/robot/libs:/opt/robotframework/libs:Z \
+          -v ${{ github.workspace }}/hsl/robot/resources:/opt/robotframework/resources:Z \
+          -v ${{ github.workspace }}/hsl/robot/tests:/opt/robotframework/tests:Z \
           --user $(id -u):$(id -g) \
           ppodgorsek/robot-framework:latest \
           robot -d /opt/robotframework/reports -P /opt/robotframework -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }} -v HEADLESS:True /opt/robotframework/tests
