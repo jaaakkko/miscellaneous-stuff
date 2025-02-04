@@ -13,7 +13,7 @@ ${GEOCODING_API_URL}                  http://api.digitransit.fi/geocoding/v1
 ${GEOCODING_REVERSE_ENDPOINT}         /reverse
 
 ${BROWSER}                            chromium
-${HEADLESS}                           False
+${HEADLESS}                           True
 ${HSL_URL}                            https://www.hsl.fi
 ${HSL_TICKETS_URL}                    ${HSL_URL}/liput-ja-hinnat
 

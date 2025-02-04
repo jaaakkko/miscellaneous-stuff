@@ -49,12 +49,13 @@ jobs:
         tree
         sudo mkdir ${{ github.workspace }}/hsl/robot/reports && sudo chmod -R 777 ${{ github.workspace }}
         docker run --rm \
-          -v $(pwd)/hsl/robot/requirements.txt:/opt/robotframework/pip-requirements.txt:Z \
-          -v $(pwd)/hsl/robot/reports:/opt/robotframework/reports:Z \
-          -v $(pwd)/hsl/robot:/opt/robotframework/tests:Z \
+          -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot/requirements.txt:/opt/robotframework/pip-requirements.txt:Z \
+          -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot/reports:/opt/robotframework/reports:Z \
+          -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot:/opt/robotframework/tests:Z \
+          -e ROBOT_OPTIONS="-d /opt/robotframework/reports" \
+          -e ROBOT_OPTIONS="-v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }}" \
           --user $(id -u):$(id -g) \
-          ppodgorsek/robot-framework:latest \
-          robot -d /opt/robotframework/reports -P /opt/robotframework -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }} -v HEADLESS:True /opt/robotframework/tests
+          ppodgorsek/robot-framework:latest
 
     - name: Upload Robot Framework results
       if: always()
