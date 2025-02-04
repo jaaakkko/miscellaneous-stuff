@@ -30,16 +30,18 @@ jobs:
         pip install -r requirements.txt
 
     - name: Install Rfbrowser dependencies
-      run:
+      run: |
         pwd
         npm ci
       working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
         
     - name: Install Playwright Browsers
-      run:
+      run: |
         pwd
         npx playwright install --with-deps
       working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
+      env:
+        PLAYWRIGHT_BROWSERS_PATH: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper/node_modules/playwright-core/.local-browsers
 
     - name: Run Robot Framework tests
       run: |
