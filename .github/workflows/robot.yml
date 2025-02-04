@@ -22,7 +22,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20'
 
     - name: Install Python dependencies
       run: |
@@ -30,14 +30,14 @@ jobs:
         pip install -r requirements.txt
 
     - name: Install Rfbrowser dependencies
-      run: |
-        cd /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
+      run:
         npm ci
+      working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
         
     - name: Install Playwright Browsers
-      run: |
-        cd /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
+      run:
         npx playwright install --with-deps
+      working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
 
     - name: Run Robot Framework tests
       run: |
