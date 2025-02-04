@@ -45,6 +45,9 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
+        pwd
+        ls
+        tree
         sudo mkdir ${{ github.workspace }}/hsl/robot/reports && sudo chmod -R 777 ${{ github.workspace }}/hsl/robot
         docker run --rm \
           -v ${{ github.workspace }}/hsl/robot/requirements.txt:/opt/robotframework/pip-requirements.txt:Z \
