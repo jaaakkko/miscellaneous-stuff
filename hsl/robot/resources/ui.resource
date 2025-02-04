@@ -2,6 +2,9 @@
 Resource           ${CURDIR}/../resources/common.resource
 *** Variables ***
 ${LOC_BTN_DECLINE_COOKIES}            text=Vain välttämättömät
+${LOC_BTN_ACCEPT_COOKIES}             text=Hyväksy kaikki
+
+${LOC_MAIN_NAV_BAR}                   nav[aria-label="Päänavigaatio"]
 
 ${LOC_BTN_ONETIME_TICKETS}            text=Kertaliput
 ${LOC_BTN_CUSTOMER_TYPE_DROPDOWN}     button#asiakasryhma-toggle-button
@@ -12,6 +15,8 @@ ${LOC_TICKET_PRICE}                   //div[contains(@class, "ticketItemColumnPr
 
 
 *** Keywords ***
+Accept Cookies
+    Click    ${LOC_BTN_ACCEPT_COOKIES}
 Decline Cookies
     Click    ${LOC_BTN_DECLINE_COOKIES}
 Click One Time Tickets
