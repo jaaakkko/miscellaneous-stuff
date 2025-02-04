@@ -45,6 +45,7 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
+        sudo chmod -R 777 ${{ github.workspace }}/hsl/robot/results
         docker run --rm \
           -v ${{ github.workspace }}/hsl/robot/results:/opt/robotframework/results:Z \
           -v ${{ github.workspace }}/hsl/robot/tests:/opt/robotframework/tests:Z \
