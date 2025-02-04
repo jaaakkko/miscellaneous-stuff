@@ -20,8 +20,7 @@ jobs:
           -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot/reports:/opt/robotframework/reports:Z \
           -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot:/opt/robotframework/tests:Z \
           -e ROBOT_OPTIONS="-d /opt/robotframework/reports" \
-          -e ROBOT_OPTIONS="-e hsl" \
-          -e ROBOT_OPTIONS="-v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }}" \
+          -e ROBOT_OPTIONS="-e hsl -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }}" \
           --user $(id -u):$(id -g) \
           ppodgorsek/robot-framework:latest
 
