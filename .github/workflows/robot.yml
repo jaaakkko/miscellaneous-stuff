@@ -49,7 +49,7 @@ jobs:
         tree
         sudo mkdir ${{ github.workspace }}/hsl/robot/reports && sudo chmod -R 777 ${{ github.workspace }}
         docker run --rm \
-          -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot/requirements.txt:/opt/robotframework/pip-requirements.txt:Z \
+          -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot/ci-requirements.txt:/opt/robotframework/pip-requirements.txt:Z \
           -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot/reports:/opt/robotframework/reports:Z \
           -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot:/opt/robotframework/tests:Z \
           -e ROBOT_OPTIONS="-d /opt/robotframework/reports" \
