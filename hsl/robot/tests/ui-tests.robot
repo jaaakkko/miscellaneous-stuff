@@ -10,6 +10,7 @@ Force Tags        ui
 Verify HSL One Time Ticket Price
     [Documentation]    Verifies that the price of a one time ticket for adult is 3.20€
     New Page    ${HSL_TICKETS_URL}
+    Take Screenshot
     Decline Cookies
     Click One Time Tickets
     ${ui_price}    Get Ticket Price With Selections    Aikuinen    AB
