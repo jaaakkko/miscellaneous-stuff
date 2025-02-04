@@ -6,6 +6,7 @@ const HSL_TICKETS_URL = `${HSL_URL}/liput-ja-hinnat`
 
 test('HSL one time ticket price', async ({ page }) => {
     await page.goto(HSL_TICKETS_URL)
+    await page.screenshot();
     await page.getByRole('button', { name: 'Vain välttämättömät' }).click();
     await page.getByRole('link', { name: 'Kertaliput Satunnaisille' }).click();
     await expect(page).toHaveURL('https://www.hsl.fi/liput-ja-hinnat/kertaliput');
