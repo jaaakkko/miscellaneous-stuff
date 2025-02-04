@@ -46,9 +46,10 @@ jobs:
     - name: Run Robot Framework tests
       run: |
         docker run --rm \
-          -v ${{ github.workspace }}/hsl/robot/results:/opt/robotframework/reports:Z \
+          -v ${{ github.workspace }}/hsl/robot/results:/opt/robotframework/results:Z \
           -v ${{ github.workspace }}/hsl/robot/tests:/opt/robotframework/tests:Z \
           -e APIKEY=${{ secrets.DIGITRANSIT_APIKEY }} \
+          --user $(id -u):$(id -g) \
           ppodgorsek/robot-framework:latest \
           robot -d /opt/robotframework/results -v APIKEY:${APIKEY} -v HEADLESS:True /opt/robotframework/tests
 
