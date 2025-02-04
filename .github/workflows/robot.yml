@@ -31,11 +31,13 @@ jobs:
 
     - name: Install Rfbrowser dependencies
       run:
+        pwd
         npm ci
       working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
         
     - name: Install Playwright Browsers
       run:
+        pwd
         npx playwright install --with-deps
       working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
 
