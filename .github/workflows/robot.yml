@@ -48,7 +48,7 @@ jobs:
         sudo mkdir ${{ github.workspace }}/hsl/robot/results && sudo chmod -R 777 ${{ github.workspace }}/hsl/robot/results
         docker run --rm \
           -v ${{ github.workspace }}/hsl/robot/results:/opt/robotframework/results:Z \
-          -v ${{ github.workspace }}/hsl/robot/tests:/opt/robotframework/tests:Z \
+          -v ${{ github.workspace }}/hsl/robot:/opt/robotframework:Z \
           -e APIKEY=${{ secrets.DIGITRANSIT_APIKEY }} \
           --user $(id -u):$(id -g) \
           ppodgorsek/robot-framework:latest \
