@@ -14,3 +14,8 @@ Verify HSL One Time Ticket Price
     Click One Time Tickets
     ${ui_price}    Get Ticket Price With Selections    Aikuinen    AB
     Should Be Equal As Strings    ${ui_price}    3,20 €
+
+Test Accessing Google
+    New Page    https://www.google.com
+    Take Screenshot
+    Wait For Navigation    url=https://www.google.com
