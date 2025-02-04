@@ -49,10 +49,9 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/hsl/robot/results:/opt/robotframework/results:Z \
           -v ${{ github.workspace }}/hsl/robot:/opt/robotframework:Z \
-          -e APIKEY=${{ secrets.DIGITRANSIT_APIKEY }} \
+          -e ROBOT_OPTIONS="-d /opt/robotframework/results -v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }} -v HEADLESS:True /opt/robotframework/tests" \
           --user $(id -u):$(id -g) \
-          ppodgorsek/robot-framework:latest \
-          robot -d /opt/robotframework/results -v APIKEY:${APIKEY} -v HEADLESS:True /opt/robotframework/tests
+          ppodgorsek/robot-framework:latest
 
     - name: Upload Robot Framework results
       if: always()
