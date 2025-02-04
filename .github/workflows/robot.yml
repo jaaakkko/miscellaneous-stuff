@@ -6,42 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # defaults:
-    #   run:
-    #     working-directory: hsl/robot
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    # - name: Set up Python
-    #   uses: actions/setup-python@v4
-    #   with:
-    #     python-version: '3.12'
-
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v4
-    #   with:
-    #     node-version: '20'
-
-    # - name: Install Python dependencies
-    #   run: |
-    #     python -m pip install --upgrade pip
-    #     pip install -r requirements.txt
-
-    # - name: Install Rfbrowser dependencies
-    #   run: |
-    #     pwd
-    #     npm ci
-    #   working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
-        
-    # - name: Install Playwright Browsers
-    #   run: |
-    #     pwd
-    #     npx playwright install --with-deps
-    #   working-directory: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper
-    #   env:
-    #     PLAYWRIGHT_BROWSERS_PATH: /opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/Browser/wrapper/node_modules/playwright-core/.local-browsers
 
     - name: Run Robot Framework tests
       run: |
@@ -54,6 +21,7 @@ jobs:
           -v /home/runner/work/miscellaneous-stuff/miscellaneous-stuff/hsl/robot:/opt/robotframework/tests:Z \
           -e ROBOT_OPTIONS="-d /opt/robotframework/reports" \
           -e ROBOT_OPTIONS="-v APIKEY:${{ secrets.DIGITRANSIT_APIKEY }}" \
+          -e ROBOT_OPTIONS="-e hsl" \
           --user $(id -u):$(id -g) \
           ppodgorsek/robot-framework:latest
 

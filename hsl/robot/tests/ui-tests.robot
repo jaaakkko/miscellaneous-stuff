@@ -8,6 +8,7 @@ Force Tags        ui
 
 *** Test Cases ***
 Verify HSL Page Opens
+    [Tags]    hsl
     New Page    ${HSL_URL}
     Take Screenshot
     Accept Cookies
@@ -15,6 +16,7 @@ Verify HSL Page Opens
 
 Verify HSL One Time Ticket Price
     [Documentation]    Verifies that the price of a one time ticket for adult is 3.20€
+    [Tags]    hsl
     New Page    ${HSL_TICKETS_URL}
     Accept Cookies
     Click One Time Tickets
